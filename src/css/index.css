@@ -2,6 +2,8 @@
 @import "./login.css";
 @import "./register.css";
 @import "./form.css";
+@import "./search.css";
+@import "./dashboard.css";
 
 html {
     box-sizing: border-box;
@@ -11,7 +13,6 @@ html {
   #root {
     margin: 0;
     height: 100vh;
-    overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

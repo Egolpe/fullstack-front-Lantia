@@ -4,4 +4,5 @@
     width: 70%;
     position: relative;
     left: 770px;
+    overflow: hidden;
 }

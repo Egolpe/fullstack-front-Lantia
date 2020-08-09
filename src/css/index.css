@@ -1,4 +1,7 @@
 @import "./homePage.css";
+@import "./login.css";
+@import "./register.css";
+@import "./form.css";
 
 html {
     box-sizing: border-box;

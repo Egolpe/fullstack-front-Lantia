@@ -1,10 +1,16 @@
 import React, { Fragment } from 'react';
+import { useHistory } from "react-router-dom"
 import banner from "../img/banner.jpg";
 import AppleIcon from '@material-ui/icons/Apple';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket, faCogs } from '@fortawesome/free-solid-svg-icons';
 
 export function HomePage() {
+
+    const history = useHistory();
+    const handleAcceder = () => {
+        history.push("/login")
+    }
     return (
         <Fragment>
             <div className="home">
@@ -14,7 +20,7 @@ export function HomePage() {
                 />
                 <div className="encabezado encabezado d-flex flex-row justify-content-between">
                 <h1>SEEKER</h1>
-                <button className="btn-blue">
+                <button className="btn-blue" onClick={handleAcceder}>
                     ACCEDER
                 </button>
                 </div>

@@ -5,6 +5,11 @@ import { PrivateRoute } from "./components/PrivateRouter";
 import { AuthProvider } from "./context/auth-context";
 
 import { HomePage } from "./pages/HomePage";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
+import { Dashboard } from "./pages/Dashboard";
+import { Recuperar } from "./pages/Recuperar";
+import UserPreferences from "./pages/UserPreferences";
 
 
 function App() {
@@ -12,9 +17,25 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/" component={HomePage}>
             <HomePage />
           </Route>
+          <Route  path="/login" component={Login}>
+            <Login />
+          </Route> 
+          <Route  path="/register" component={Register}>
+            <Register />
+          </Route>
+          <Route  path="/dashboard" component={Dashboard}>
+            <Dashboard />
+          </Route>
+          <Route  path="/recuperar" component={Recuperar}>
+            <Recuperar />
+          </Route>
+          <Route  path="/preferences" component={UserPreferences}>
+            <UserPreferences />
+          </Route>
+          
           {/* <Route path="/calendar">
             <Calendar />
           </Route>

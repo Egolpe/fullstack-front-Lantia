@@ -14,4 +14,17 @@
     width: 70%;
     position: relative;
     left: 770px;
+    
+}
+
+.container {
+    padding-top: 250px;
+    padding-left: 50px;
+    padding-right: 400px;
+    
+} 
+
+.logint {
+    font-size: 1.75rem;
+    color: #0f699b;
 }

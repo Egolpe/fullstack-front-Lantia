@@ -27,15 +27,15 @@ export function Register() {
             alt="startup"
           />
     <div className='register'>
-   
-    <h3>Registrate</h3>
-    <form onSubmit={handleSubmit(handleRegister)} noValidate>
+      <div className="container">
+        <h3 className="registro">Registrate</h3>
+        <form onSubmit={handleSubmit(handleRegister)} noValidate>
       <div
-        className={`form-control ${
+        className={`form-group d-flex flex-column col-4 p-0 ${
           errors.name ? 'ko' : formState.touched.name && 'ok'
         }`}
       >
-        <label>Nombre</label>
+        <label for="formGroupExampleInput">Nombre</label>
         <input
           ref={register({
             required: 'El nombre es requerido'
@@ -48,7 +48,7 @@ export function Register() {
         )}
       </div>
       <div
-        className={`form-control ${
+        className={`form-group d-flex flex-column col-4 p-0 ${
           errors.apellidos ? 'ko' : formState.touched.apellidos && 'ok'
         }`}
       >
@@ -65,7 +65,7 @@ export function Register() {
         )}
       </div>
       <div
-        className={`form-control ${
+        className={`form-group d-flex flex-column col-4 p-0 ${
           errors.sexo ? 'ko' : formState.touched.sexo && 'ok'
         }`}
       >
@@ -81,23 +81,24 @@ export function Register() {
         <option value="otro">otro</option>
         </select>
         {errors.sexo && (
-          <span className='errorMessage'>{errors.sexo.message}</span>
+          <span className='errorMessage form-group d-flex flex-column col-4 p-0'>{errors.sexo.message}</span>
         )}
       </div>
       
         <label>Fecha de nacimiento</label>
         <DatePicker 
+        
         selected={startDate} 
         onChange={date => setStartDate(date)}
         dateFormat="dd-MM-yyyy"
         />
 
       <div
-        className={`form-control ${
+        className={`form-group d-flex flex-column col-4 p-0 ${
           errors.celular ? 'ko' : formState.touched.celular && 'ok'
         }`}
       >
-        <label>Celular</label>
+        <label>Número de teléfono</label>
         <input
           ref={register({
             required: 'El celular es requerido'
@@ -110,7 +111,7 @@ export function Register() {
         )}
       </div>
       <div
-        className={`form-control ${
+        className={`form-group d-flex flex-column col-4 p-0 ${
           errors.email ? 'ko' : formState.touched.email && 'ok'
         }`}
       >
@@ -132,7 +133,7 @@ export function Register() {
         )}
       </div>
       <div
-        className={`form-control ${
+        className={`form-group d-flex flex-column col-4 p-0 ${
           errors.password ? 'ko' : formState.touched.password && 'ok'
         }`}
       >
@@ -156,7 +157,7 @@ export function Register() {
         <div className="final-form">
           <button
             type='submit'
-            className='btn-blue'
+            className='btn-blue col-4 p-0'
             disabled={formState.isSubmitting}
           >
             Registrate gratis
@@ -170,6 +171,7 @@ export function Register() {
         </div>  
       </div>
      </form>
+     </div>
     </div>
   </Fragment>
   

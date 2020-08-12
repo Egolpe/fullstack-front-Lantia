@@ -17,7 +17,7 @@ export function Login () {
     });
 
     const handleLogin = () => {
-      history.push("/dashboard")
+      history.push("/userPreferences")
     }
 
     const history = useHistory();
@@ -32,15 +32,17 @@ export function Login () {
               alt="startup"
           />
           <div className="login">
-            <h1>Iniciar sesión</h1>
+            <div className="container justify-content-between">
+            <h3 className="logint">Iniciar sesión</h3>
             <form onSubmit={handleSubmit(handleLogin)} noValidate>
           <div
-            className={`form-control ${
+            className={`form-group d-flex flex-column col-4 p-0 ${
               errors.email ? "ko" : formState.touched.email && "ok"
             }`}
           >
-            <label>Usuario o Email</label>
+            <label for="formGroupExampleInput ">Usuario o Email</label>
             <input
+              className="form-group"
               ref={register({
                 required: "El usuario o email son requeridos",
                 pattern: {
@@ -57,7 +59,7 @@ export function Login () {
             )}
           </div>
           <div
-            className={`form-control ${
+            className={`form-group d-flex flex-column col-4 p-0 ${
               errors.password ? "ko" : formState.touched.password && "ok"
             }`}
           >
@@ -81,18 +83,19 @@ export function Login () {
           </div>
           <div>
               <input 
+                
                 name="checkbox"
                 type="checkbox"
               >
               </input>
-              <label><p> </p>Recordar mi cuenta</label>
+              <label className="form-check-label" for="invalidCheck2"><p> </p>Recordar mi cuenta</label>
 
           </div>
           <div className="btn-container">
             <div className="final-form">
               <button 
                 type="submit"
-                className="btn-blue"
+                className="btn-blue col-4"
                 disabled={formState.isSubmitting}
               >
                 Iniciar Sesión  
@@ -113,7 +116,7 @@ export function Login () {
             </div> 
           </div>
         </form>
-            
+        </div>
             
         </div>
       </Fragment>

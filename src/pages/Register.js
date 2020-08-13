@@ -4,21 +4,35 @@ import startup from "../img/startup.jpg";
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/auth-context';
 import DatePicker from 'react-datepicker';
+import { signUp } from '../http/authService';
 import 'react-datepicker/dist/react-datepicker.css'
 
 
 export function Register() {
 
-    const { register, errors, formState, handleSubmit } = useForm({
+  const { register, errors, formState, handleSubmit } = useForm({
         mode: 'onBlur'
-      });
-      const [startDate, setStartDate] = useState(new Date());
-      const { setIsAuthenticated, setCurrentUser } = useAuth();
+  });
+  const [startDate, setStartDate] = useState(new Date());
+  const { setIsAuthenticated, setCurrentUser } = useAuth();
       
-      const history = useHistory();
-    const handleRegister = () => {
-        history.push("/login")
-    }
+    const history = useHistory();
+ 
+    const handleRegister = formData => {
+      const data = {...formData,
+        birthday: startDate
+      } 
+      console.log(data)
+      return signUp(data)
+        .then(response => {
+          setIsAuthenticated(false);
+          setCurrentUser(response.data);
+          history.push('/login');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    };
     return(
     <Fragment>
          <img 
@@ -49,7 +63,7 @@ export function Register() {
       </div>
       <div
         className={`form-group d-flex flex-column col-4 p-0 ${
-          errors.apellidos ? 'ko' : formState.touched.apellidos && 'ok'
+          errors.lastname ? 'ko' : formState.touched.lastname && 'ok'
         }`}
       >
         <label>Apellidos</label>
@@ -57,16 +71,16 @@ export function Register() {
           ref={register({
             required: 'Los apellidos son requeridos'
           })}
-          name='apellidos'
+          name='lastname'
           type='text'
         />
-        {errors.apellidos && (
-          <span className='errorMessage'>{errors.apellidos.message}</span>
+        {errors.lastname && (
+          <span className='errorMessage'>{errors.lastname.message}</span>
         )}
       </div>
       <div
         className={`form-group d-flex flex-column col-4 p-0 ${
-          errors.sexo ? 'ko' : formState.touched.sexo && 'ok'
+          errors.gender ? 'ko' : formState.touched.gender && 'ok'
         }`}
       >
         <label>Sexo</label>
@@ -74,28 +88,28 @@ export function Register() {
           ref={register({
             required: 'El sexo es requerido'
           })}
-          name='sexo'
+          name='gender'
         >
         <option value="hombre">hombre</option>
         <option value="mujer">mujer</option>
         <option value="otro">otro</option>
         </select>
-        {errors.sexo && (
-          <span className='errorMessage form-group d-flex flex-column col-4 p-0'>{errors.sexo.message}</span>
+        {errors.gender && (
+          <span className='errorMessage form-group d-flex flex-column col-4 p-0'>{errors.gender.message}</span>
         )}
       </div>
       
         <label>Fecha de nacimiento</label>
         <DatePicker 
-        
-        selected={startDate} 
-        onChange={date => setStartDate(date)}
-        dateFormat="dd-MM-yyyy"
+          selected={startDate} 
+          onChange={date => setStartDate(date)}
+          dateFormat="dd-MM-yyyy"
         />
+        
 
       <div
         className={`form-group d-flex flex-column col-4 p-0 ${
-          errors.celular ? 'ko' : formState.touched.celular && 'ok'
+          errors.phone ? 'ko' : formState.touched.phone && 'ok'
         }`}
       >
         <label>Número de teléfono</label>
@@ -103,11 +117,11 @@ export function Register() {
           ref={register({
             required: 'El celular es requerido'
           })}
-          name='celular'
+          name='phone'
           type='text'
         />
-        {errors.celular && (
-          <span className='errorMessage'>{errors.celular.message}</span>
+        {errors.phone && (
+          <span className='errorMessage'>{errors.phone.message}</span>
         )}
       </div>
       <div

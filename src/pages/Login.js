@@ -2,28 +2,41 @@ import React, { Fragment } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import startup from "../img/startup.jpg";
 import { useForm } from 'react-hook-form';
+import { signIn } from "../http/authService";
+import { useAuth } from "../context/auth-context";
 
 export function Login () {
 
-    const {
-     handleSubmit,
-     register,
-     errors,
-     formState,
-     setError,
-     setValue
-    } = useForm({
-      mode: "onBlur"
-    });
+  const {
+    handleSubmit,
+    register,
+    errors,
+    formState,
+    setError,
+    setValue
+  } = useForm({
+    mode: "onBlur"
+  });
+  const history = useHistory();
+  const { setIsAuthenticated, setCurrentUser } = useAuth();
 
-    const handleLogin = () => {
-      history.push("/userPreferences")
+  const handleLogin = formData => {
+    const data = {
+      ...formData,
+      "remember_me": true
     }
+    return signIn(data)
+      .then(response => {
+        setIsAuthenticated(true);
+        setCurrentUser(response.data);
 
-    const history = useHistory();
-    const handleRegister = () => {
-        history.push("/register")
-    }
+        history.push(`/preferences`);
+      })
+      .catch(error => {
+        setValue("password", "");
+        setError("password", "credentials", "The credentials are invalid");
+      });
+  };
 
     return(
         <Fragment>

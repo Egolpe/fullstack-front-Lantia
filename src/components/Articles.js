@@ -1,5 +1,6 @@
 import React, { Fragment, useReducer, useEffect } from 'react';
 import { getArticles } from "../http/articlesService";
+import DescriptionIcon from '@material-ui/icons/Description';
 
 function articlesReducer(state, action) {
     switch (action.type) {
@@ -34,7 +35,10 @@ export function Articles() {
     return (
         <Fragment>
             <div className="articles nav-item dropdown"> 
-                <h1>Noticias</h1>
+                <div className="d-flex flex-row justify-content-between">
+                    <DescriptionIcon fontSize="large" />
+                    <h1>Artículos</h1>
+                </div>
                 {state.articles.length >0 && state.articles.map( (item, index) => (
                     <div key={index} >
                         <div className="card bg-light mb-3" styles="max-width: 18rem;">

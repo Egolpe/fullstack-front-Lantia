@@ -4,4 +4,20 @@
 
 .news img {
     width: 250px;
+    
+}
+
+.news {
+    border-top-style: solid;
+    border-top-color: yellow;
+}
+
+.videos {
+    border-top-style: solid;
+    border-top-color: red;
+}
+
+.articles {
+    border-top-style: solid;
+    border-top-color: #0f699b;
 }

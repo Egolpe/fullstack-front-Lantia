@@ -17,22 +17,22 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Switch>
-          <Route exact path="/" component={HomePage}>
+          <Route exact path="/">
             <HomePage />
           </Route>
-          <Route  path="/login" component={Login}>
+          <Route  path="/login">
             <Login />
           </Route> 
-          <Route  path="/register" component={Register}>
+          <Route  path="/register">
             <Register />
           </Route>
-          <PrivateRoute  path="/dashboard" component={Dashboard}>
+          <PrivateRoute  path="/dashboard">
             <Dashboard />
           </PrivateRoute>
-          <Route  path="/recuperar" component={Recuperar}>
+          <Route  path="/recuperar">
             <Recuperar />
           </Route>
-          <PrivateRoute  path="/preferences" component={UserPreferences}>
+          <PrivateRoute  path="/preferences">
             <UserPreferences />
           </PrivateRoute>
         </Switch>

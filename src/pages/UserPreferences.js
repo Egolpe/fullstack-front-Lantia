@@ -6,6 +6,7 @@ export default function UserPreferences() {
 
     const { currentUser, setCurrentUser, setIsAuthenticated } = useAuth();
 
+    console.log(currentUser);
     const history = useHistory();
 
     const [preferences, setPreferences] = useState({

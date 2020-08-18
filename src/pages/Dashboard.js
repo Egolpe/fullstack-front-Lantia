@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { useAuth } from "../context/auth-context";
 import { Search } from "../components/Search"
 import { Videos } from "../components/Videos"
 import { News } from "../components/News"
@@ -23,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function Dashboard() {
+
+    const { currentUser, setCurrentUser, setIsAuthenticated } = useAuth();
     const classes = useStyles()
     console.log(window.localStorage)
 

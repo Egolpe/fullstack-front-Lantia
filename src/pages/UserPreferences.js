@@ -1,7 +1,10 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import { useAuth } from "../context/auth-context";
 import { useHistory } from 'react-router-dom';
 
 export default function UserPreferences() {
+
+    const { currentUser, setCurrentUser, setIsAuthenticated } = useAuth();
 
     const history = useHistory();
 

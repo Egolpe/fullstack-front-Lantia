@@ -26,49 +26,15 @@ function App() {
           <Route  path="/register" component={Register}>
             <Register />
           </Route>
-          <Route  path="/dashboard" component={Dashboard}>
+          <PrivateRoute  path="/dashboard" component={Dashboard}>
             <Dashboard />
-          </Route>
+          </PrivateRoute>
           <Route  path="/recuperar" component={Recuperar}>
             <Recuperar />
           </Route>
-          <Route  path="/preferences" component={UserPreferences}>
+          <PrivateRoute  path="/preferences" component={UserPreferences}>
             <UserPreferences />
-          </Route>
-          
-          {/* <Route path="/calendar">
-            <Calendar />
-          </Route>
-          <PrivateRoute path="/home">
-            <Dashboard />
           </PrivateRoute>
-          <PrivateRoute path="/calendarPrivate">
-            <CalendarPrivate />
-          </PrivateRoute>
-          <PrivateRoute path="/events_user">
-            <EventsUser />
-          </PrivateRoute>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/events">
-            <GetEvent />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <PrivateRoute path="/profile">
-            <Profile />
-          </PrivateRoute>
-          <PrivateRoute path="/update">
-            <UserUpdate />
-          </PrivateRoute>
-          <PrivateRoute path="/delete">
-            <DeleteAccount />
-          </PrivateRoute>
-          <PrivateRoute path="/add-event">
-            <AddEvent />
-          </PrivateRoute> */}
         </Switch>
       </AuthProvider>
     </BrowserRouter>

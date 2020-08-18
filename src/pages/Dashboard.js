@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function Dashboard() {
-    const classes = useStyles();
+    const classes = useStyles()
+    console.log(window.localStorage)
 
     return (
         <Fragment>
@@ -43,7 +44,7 @@ export function Dashboard() {
                     <News />
                     <div className="ml-5">
                         <Videos />
-                        <Articles options={"big data"}/>
+                        <Articles options={"big data"} />
                     </div>
                 </div>
             </div>

@@ -44,7 +44,7 @@ export function signIn(loginData) {
 
 export function signUp(registerData) {
   return axios.post(
-    `http://127.0.0.1:8000/api/auth/signup`,
+    `http://127.0.0.1:8000/api/auth/signUp`,
     registerData
   );
 }

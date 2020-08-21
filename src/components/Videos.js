@@ -21,13 +21,13 @@ export function Videos() {
               </div>
               <Slider {...settings}>
                       <div className="slideItem mb-2">
-                        <iframe src={`https://www.youtube.com/embed/?autoplay=1&enablejsapi=1&controls=0&enable`}
+                        {/* <iframe src={`https://www.youtube.com/embed/?autoplay=1&enablejsapi=1&controls=0&enable`}
                             className="appContentYoutubePlayer"
                             frameBorder='0'
                             allow='autoplay; encrypted-media'
                             allowFullScreen
                             title='video'
-                        />
+                        /> */}
                       </div>
               </Slider>
             </div>

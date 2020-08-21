@@ -22,6 +22,7 @@ export function Articles() {
 
     useEffect(() => {
         getArticles().then(response => {
+            console.log(response)
             const { pages } = response.data.query
             dispatch({
                 type: "GET_ARTICLES",

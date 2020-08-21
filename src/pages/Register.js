@@ -9,6 +9,18 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 
 export function Register() {
+ 
+  const calcularEdad = (date) => {
+    let hoy = new Date();
+    let cumpleanos = new Date(date);
+    let edad = hoy.getFullYear() - cumpleanos.getFullYear();
+    let m = hoy.getMonth() - cumpleanos.getMonth();
+
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--;
+    }
+    return edad;
+}
 
   const { register, errors, formState, handleSubmit } = useForm({
         mode: 'onBlur'
@@ -19,19 +31,24 @@ export function Register() {
     const history = useHistory();
  
     const handleRegister = formData => {
-      const data = {...formData,
-        birthday: startDate
-      } 
-      console.log(data)
-      return signUp(data)
-        .then(response => {
-          setIsAuthenticated(false);
-          setCurrentUser(response.data);
-          history.push('/login');
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      const age = calcularEdad(startDate);
+      if (age >= 18 ){
+        const data = {...formData,
+          birthday: startDate
+        } 
+        console.log(data)
+        return signUp(data)
+          .then(response => {
+            setIsAuthenticated(false);
+            setCurrentUser(response.data);
+            history.push('/login');
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else{
+        alert("Debes ser mayor de 18 años para registrarte");
+      }
     };
     return(
     <Fragment>
@@ -49,7 +66,7 @@ export function Register() {
           errors.name ? 'ko' : formState.touched.name && 'ok'
         }`}
       >
-        <label for="formGroupExampleInput">Nombre</label>
+        <label>Nombre</label>
         <input
           ref={register({
             required: 'El nombre es requerido'
@@ -101,6 +118,7 @@ export function Register() {
       
         <label>Fecha de nacimiento</label>
         <DatePicker 
+          id="test"
           selected={startDate} 
           onChange={date => setStartDate(date)}
           dateFormat="dd-MM-yyyy"

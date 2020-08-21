@@ -39,12 +39,12 @@ axios.interceptors.response.use(
 );
 
 export function signIn(loginData) {
-  return axios.post(`http://127.0.0.1:8000/api/auth/login`, loginData);
+  return axios.post( `${process.env.REACT_APP_BACKEND_URL}/api/auth/login`, loginData);
 }
 
 export function signUp(registerData) {
   return axios.post(
-    `http://127.0.0.1:8000/api/auth/signUp`,
+    `${process.env.REACT_APP_BACKEND_URL}/api/auth/signUp`,
     registerData
   );
 }

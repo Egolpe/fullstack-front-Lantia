@@ -29,7 +29,6 @@ export function Login () {
       .then(response => {
         setIsAuthenticated(true);
         setCurrentUser(response.data);
-
         history.push(`/preferences`);
       })
       .catch(error => {
@@ -53,7 +52,7 @@ export function Login () {
               errors.email ? "ko" : formState.touched.email && "ok"
             }`}
           >
-            <label for="formGroupExampleInput ">Usuario o Email</label>
+            <label>Usuario o Email</label>
             <input
               className="form-group"
               ref={register({
@@ -79,7 +78,7 @@ export function Login () {
             <label>Contraseña</label>
             <input
               ref={register({
-                required: "El contraseña es requerida",
+                required: "La contraseña es requerida",
                 minLength: {
                   value: 6,
                   message:
@@ -101,7 +100,7 @@ export function Login () {
                 type="checkbox"
               >
               </input>
-              <label className="form-check-label" for="invalidCheck2"><p> </p>Recordar mi cuenta</label>
+              <label className="form-check-label"><p> </p>Recordar mi cuenta</label>
 
           </div>
           <div className="btn-container">
